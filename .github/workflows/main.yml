@@ -1,0 +1,29 @@
+name: CI
+
+# Triggers the workflow on push or pull request events
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  # Allows manual trigger
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      # Simple test that always passes
+      - name: Run a simple test
+        run: |
+          echo "Hello, GitHub Actions!"
+          echo "Workflow is running successfully!"
+          
+      # Another passing step
+      - name: Check Python version
+        run: python --version
